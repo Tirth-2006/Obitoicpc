@@ -1,0 +1,30 @@
+>>**GCD of two numbers (long long)**
+
+```cpp
+long long gcd(long long a,long long b)
+{
+    return std::gcd(a,b);
+}
+```
+
+>>**GCD of a vector (long long)**
+
+```cpp
+long long gcd_vector(const vector<long long>&v)
+{
+    long long g=0;
+    for(long long x:v){
+        g=std::gcd(g,x);
+    }
+    return g;
+}
+```
+
+>>**LCM of two numbers (long long)**
+
+```cpp
+long long lcm(long long a,long long b)
+{
+    return (a/std::gcd(a,b))*b;
+}
+```
