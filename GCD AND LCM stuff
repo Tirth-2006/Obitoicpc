@@ -1,33 +1,19 @@
 
-## Number Theory
+------------------------------------------------------------------------------------------
 
-### GCD of two numbers (long long)
+1))GCD OF VECTOR
 
-```cpp
-long long gcd(long long a,long long b)
-{
-    return std::gcd(a,b);
+long long g=0;
+for(auto x:vec){
+    g=std::gcd(g,x);
 }
-```
+-------------------------------------------------------------------------------------------
 
-### GCD of a vector (long long)
+2)) LCM OF VECTOR
 
-```cpp
-long long gcd_vector(const vector<long long>&v)
-{
-    long long g=0;
-    for(long long x:v){
-        g=std::gcd(g,x);
-    }
-    return g;
+long long l=1;
+for(auto x:vec){
+    l=std::lcm(l,x);
 }
-```
 
-### LCM of two numbers (long long)
-
-```cpp
-long long lcm(long long a,long long b)
-{
-    return (a/std::gcd(a,b))*b;
-}
-```
+---------------------------------------------------------------------------------------------
