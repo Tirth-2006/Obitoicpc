@@ -15,5 +15,5 @@ long long l=1;
 for(auto x:vec){
     l=lcm(l,x);
 }
-
+ //(NOTE) :-If all integers from 1 to K divide n, their LCM must divide n.
 ---------------------------------------------------------------------------------------------
