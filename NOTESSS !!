@@ -1,0 +1,6 @@
+>> Whenever you see Static Array (no permanent updates) + Range Queries [l, r], your brain should immediately pull out Prefix Sums.
+--Need range sum? Prefix sum of elements.
+--Need count of odd numbers in a range? Prefix sum of 1s and 0s (a[i] % 2).
+
+>>
+
