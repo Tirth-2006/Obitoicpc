@@ -2,5 +2,7 @@
 --Need range sum? Prefix sum of elements.
 --Need count of odd numbers in a range? Prefix sum of 1s and 0s (a[i] % 2).
 
->>
+>> //(NOTE) :-If all integers from 1 to K divide n, their LCM must divide n.
+
+
 
