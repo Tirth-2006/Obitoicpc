@@ -4,5 +4,5 @@
 
 >> //(NOTE) :-If all integers from 1 to K divide n, their LCM must divide n.
 
-
+>>Any positive integer can be uniquely expressed as x = 2^k * m, where m is odd and k >= 0.
 
