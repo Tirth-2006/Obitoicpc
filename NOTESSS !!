@@ -11,29 +11,29 @@
 
 >>COMBINATORICS NOTES: SUBSETS & SUBSEQUENCES
 
-1. Flip the Question (Keep vs. Remove)
+1. Frame the Problem (Keep vs. Remove)
 
-* Instead of building a valid subsequence from scratch, start with the full array and decide what to remove to hit the target sum (e.g., to get sum S - 1, we need to remove a total value of 1).
-* Group elements by whether you can keep or remove them:
-* 0s (Neutral): Removing them changes nothing (0). Each 0 has 2 choices: keep or not keep.
-* 1s (Active): Removing one gives the exact -1 needed. You must remove strictly 1 of them and keep the rest.
-* > 1s (Forbidden): Removing even one drops the sum too much. Only 1 choice: must keep.
+* When counting subsets or subsequences that meet a condition, start with the full set and look at what changes when you keep or remove elements.
+* Group elements by how they affect the condition:
+* Neutral items: Keeping or removing them has zero impact on the condition. Every item has 2 independent choices: keep or not keep.
+* Active items: Directly change the state toward or away from the target. You usually need an exact count or specific parity (odd/even) of these.
+* Forbidden items: Touching them immediately breaks the condition. Only 1 choice: must keep (or must remove).
 
-2. Count Choices for Each Group
 
-* Free choices ("keep or not keep" for every item) -> 2^k (`1LL << k`)
-* Exact picks ("remove strictly r items out of n") -> nCr (for r = 1, just `n`)
-* Locked items ("must keep" or "must remove") -> 1 choice (ignore)
+2. Count Choices per Group
+
+* Free choices ("keep or not keep" independently for each of k items) -> 2^k (`1LL << k`)
+* Exact picks ("choose strictly r items out of n") -> nCr (for r = 1, just `n`; for r = 2, `n * (n - 1) / 2`)
+* Parity picks ("choose an odd or even number of items out of k") -> 2^(k - 1) (for k >= 1)
+* Locked items ("must keep" or "must remove") -> 1 choice (multiply by 1, so ignore them)
 
 3. Combine the Groups
 
-* AND (choices happening at the same time) -> Multiply
-* Example: Pick 1 one to remove (`cnto` ways) AND decide keep/not keep for every zero (`2^cntz` ways) -> `cnto * (1LL << cntz)`.
+* AND (independent decisions happening simultaneously) -> Multiply the choices of each group.
+* OR (mutually exclusive cases or paths) -> Add the choices of each case.
 
-* OR (separate, mutually exclusive cases) -> Add
-* Example: (Remove 1st one) + (Remove 2nd one) + ... = `2^cntz + 2^cntz + ... = cnto * 2^cntz`.
+4. Sanity Checks & Common Traps
 
-4. Sanity Checks & Traps
-
-* Constraint `n <= 60` -> Big hint for `2^n` bit-shifting. Always use `1LL << k` (not `1 << k`) so it doesn't overflow 32-bit int.
-* Never trust `k = 2` -> `2 * 2^x` equals `2^(x+1)`, which can trick you into putting `cnto` inside the exponent. Always test your formula on `k = 3` (`2^x + 2^x + 2^x = 3 * 2^x`).
+* Constraint `n <= 60` -> Strong hint for bit-shifting (`2^n`). Always write `1LL << k` instead of `1 << k` to prevent 32-bit signed integer overflow.
+* Never verify a formula on `k = 2` alone -> `2 * 2^x` equals `2^(x+1)`, which can trick you into putting a multiplier inside the exponent. Always test your formula on `k = 3` (`2^x + 2^x + 2^x = 3 * 2^x`).
+* Watch out for empty subsets -> Subtract 1 from `2^k` if the problem asks for non-empty subsets and all items are free.
