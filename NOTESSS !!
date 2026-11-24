@@ -6,3 +6,35 @@
 
 >>Any positive integer can be uniquely expressed as x = 2^k * m, where m is odd and k >= 0.
 
+
+------------------------x-------------------------x----------------------------x------------------------x--------------
+
+
+
+>>COMBINATORICS: SUBSETS & SUBSEQUENCES
+
+1. Delta Framing
+
+* Track what changes (removed elements) instead of what stays to hit a target sum (e.g., sum S - 1 => delta = -1).
+* Classify elements by removal impact:
+* Neutral (0s): delta = 0 -> keep or remove freely.
+* Active (1s): delta = -1 -> needed to reach target delta.
+* Forbidden (> 1s): delta <= -2 -> must keep.
+
+
+2. Bucket Primitives
+
+* Any subset (free items) -> 2^k (`1LL << k`)
+* Exact count r of n items -> nCr (`n` when r = 1)
+* Fixed items -> 1 (ignore)
+
+3. Combining Buckets
+
+* AND (independent choices together) -> Multiply: `cnto * (1LL << cntz)`
+* OR (separate cases) -> Add
+
+4. Traps & Clues
+
+* `n <= 60` -> Signals 2^n; always use `1LL << k` to avoid 32-bit overflow.
+* Avoid `k = 2` traps -> `2 * 2^x == 2^(x+1)` can mask wrong formulas; test on `k = 3` (`3 * 2^x`).
+
