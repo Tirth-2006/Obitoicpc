@@ -37,3 +37,7 @@
 * Constraint `n <= 60` -> Strong hint for bit-shifting (`2^n`). Always write `1LL << k` instead of `1 << k` to prevent 32-bit signed integer overflow.
 * Never verify a formula on `k = 2` alone -> `2 * 2^x` equals `2^(x+1)`, which can trick you into putting a multiplier inside the exponent. Always test your formula on `k = 3` (`2^x + 2^x + 2^x = 3 * 2^x`).
 * Watch out for empty subsets -> Subtract 1 from `2^k` if the problem asks for non-empty subsets and all items are free.
+
+--------------x------------------------------------x------------------------------------x---------------------------------------x-----------------------------------x------------------------------------------------------x
+
+>> Use (n > 0) && ((n & (n - 1)) == 0) to check if n is a power of 2 in O(1) time without loops or log2().
